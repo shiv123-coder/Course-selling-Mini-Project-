@@ -1,0 +1,71 @@
+Create a full-featured, single-page PDF selling website using HTML, CSS, JavaScript, PHP, and a MySQL database. The website should have the following features:
+I. Core Functionality & Content:
+1. Course Listings: Display 8 distinct courses. For each course, show:
+* Name (e.g., 'Web Development Fundamentals', 'Graphic Design Principles', 'Python for Data Science', 'Digital Marketing Mastery', 'Mobile App Development (React Native)', 'Cybersecurity Essentials', 'Cloud Computing with AWS', 'Project Management (PMP Prep')).
+* A short description.
+* Price in Indian Rupees (₹), using relatively low integer values (e.g., ₹49, ₹39, ₹59, ₹45, ₹69, ₹55, ₹79, ₹89).
+* A relevant image for the course card (use Unsplash URLs if possible, ensuring they are distinct and appropriate for each topic, especially for 'Cybersecurity' and 'Cloud Computing').
+* An "Add to Cart" button.
+2. PDF Sales: The site sells PDF documents associated with these courses (simulated delivery).
+II. User Management:
+1. Registration Page (?view=register): Fields for Username, Email, Password, Confirm Password. Include basic validation (all fields required, valid email, password match, min length). Hash passwords securely.
+2. Login Page (?view=login): Fields for Email/Username and Password.
+3. User Roles: Implement 'user' and 'admin' roles.
+III. Shopping Cart & Payment:
+1. Shopping Cart Page (?view=cart):
+* Managed using PHP sessions.
+* Displays items added to the cart with their name, image, and price.
+* Ability to remove items from the cart.
+* Shows the total cart value in Rupees.
+* Buttons: "Continue Shopping" (links to main courses) and "Proceed to Payment."
+2. Add to Cart Functionality:
+* "Add to Cart" buttons on course cards should use AJAX to add items to the session cart.
+* Provide user feedback (e.g., "Item added!") and then redirect to the cart page.
+* Dynamically update a cart item count in the header navigation.
+3. Payment Page (?view=payment):
+* Displays the total amount from the cart.
+* Payment Gateway Simulation:
+* Show a placeholder QR code (e.g., from api.qrserver.com, including the cart total in the QR data for simulation).
+* Instructions for the user to scan, pay, and then enter details.
+* Input fields for "Email Address (for PDF delivery)" (pre-fill if user is logged in) and "Transaction ID".
+* Database Logging: On "Confirm Purchase":
+* Save the email, transaction ID, list of purchased course names, total amount, and a timestamp to a transactions table in the database.
+* Link the transaction to user_id if the user is logged in.
+* Set an initial order_status of 'Pending'.
+* Clear the cart from the session.
+* Redirect to the main page with a success message (using a GET parameter that is then converted to a session flash message).
+4. Back Navigation: "Back to Cart" button on the payment page.
+IV. Admin Panel (?view=admin):
+1. Accessible only to logged-in users with the 'admin' role.
+2. View Transactions: Display all transactions from the database in a table, showing: Transaction ID, User (username or 'Guest'), Payer Email, Courses Purchased, Total Amount, Order Status, and Purchase Timestamp.
+3. Confirm Orders: For transactions with 'Pending' status, provide a "Confirm" button. Clicking this should update the order_status in the database to 'Confirmed' and refresh the admin panel.
+V. UI/UX & Styling ("Claude Sonnet 3.7" Aesthetic):
+1. Modern, Clean Design: Use a professional and attractive layout.
+2. Font: Use 'Open Sans' from Google Fonts.
+3. Header: Make it sticky with a subtle gradient. Include the site title ("LearnSphere") and navigation links ("Courses", "Cart (count)", Login/Register or User Welcome/Logout/Admin).
+4. Hero Slider (Main Page Only):
+* Display a few featured courses (e.g., 3-4) with larger "hero images" (provide appropriate Unsplash URLs for these too) and their names/descriptions.
+* Include navigation dots and auto-cycling.
+* Buttons on slides should link to the respective course card on the page.
+5. Animations:
+* Implement subtle fade-in animations for sections as they scroll into view.
+* Animate course cards (e.g., slight lift or fade-in) as they scroll into view.
+6. Styling Details:
+* Pill-shaped buttons with hover effects.
+* Enhanced course card hover effects (lift/scale, shadow).
+* Well-styled form inputs with focus states.
+* Clear visual hierarchy for section titles (e.g., with an underline accent).
+* Responsive design for mobile and desktop.
+* Ensure the payment page layout (QR code and form) is well-aligned and responsive.
+VI. Code Structure:
+1. All code (HTML, CSS, JavaScript, PHP) should be in a single index.php file.
+2. Use PHP for backend logic, session management, and dynamic content generation.
+3. Use JavaScript for client-side interactivity (AJAX, slider, animations).
+VII. Database Schema:
+Provide the SQL CREATE TABLE statements for:
+1. users (id, username, email, password_hash, role, created_at)
+2. transactions (id, user_id (nullable FK to users.id), email, transaction_id, courses_purchased, total_amount, order_status, purchase_timestamp)
+VIII. Setup Instructions:
+Briefly mention how to set up the database (create DB, tables, update PHP constants) and how to create an admin user (register then manually update role in DB).
+
+database name should be pdf_store_v2 create the sql database also accordingly in separate file
