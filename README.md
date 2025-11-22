@@ -35,7 +35,7 @@ Copy code
 3. Open CMD and navigate to the project folder:
 
    ```cmd
-   cd "D:\~Projects\Mini Project\course selling ( telegram )"
+   cd "D:\~Projects\Mini Project\course selling "
 Start the PHP development server:
 
 cmd
